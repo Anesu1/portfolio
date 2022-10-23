@@ -1,0 +1,24 @@
+.dark{
+  background:#1d1d1d;
+  color:#fff;
+}
+.light{
+  background:rgb(255, 255, 255);
+  color:#1d1d1d;
+}
+/* @keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation-duration: 2s;
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+} */
