@@ -126,7 +126,7 @@ function Header() {
     const dispatch = useDispatch()
 
   return (
-    <Wrapper className={!isLight ? 'dark' : 'light'} bgColor={isLight ? 'rgba(243, 243, 243, 0.6)' : 'rgba(29, 29, 29, 0.4)'} color={isLight ? '#1d1d1d' : '#f3f3f3'}>
+    <Wrapper className={!isLight ? 'dark' : 'light'} bgColor={isLight ? 'rgba(243, 243, 243, 0.8)' : 'rgba(29, 29, 29,0.8)'} color={isLight ? '#1d1d1d' : '#f3f3f3'}>
         <h3 className='mobile'>
             a.n
         </h3>
