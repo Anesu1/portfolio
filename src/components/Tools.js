@@ -18,7 +18,7 @@ const Wrapper = styled.section`
     }
   }
 
-  p {
+  h2 {
     font-size: 15px;
     font-family: ${(props) => props.theme.fam.regular};
     color: #898989;
@@ -26,7 +26,7 @@ const Wrapper = styled.section`
     margin-bottom: 20px;
     line-height:30px;
   }
-  li{
+  p{
     color:${props => props.color};
     font-family: ${(props) => props.theme.fam.semibold};
     margin-bottom:10px;
@@ -58,48 +58,48 @@ function Tools() {
       id="tools"
     >
       <div className="outer">&lt;wrapper id="tools"&gt; </div>
-      <p>// Here are some of the tools I have been working with</p>
+      <h2>// Here are some of the tools I have been working with</h2>
       <div className="inner">
         <div className="inner-div">
-          <p>// Code Editor</p>
-          <li>Visual Studio Code</li>
+          <h2>// Code Editor</h2>
+          <p>Visual Studio Code</p>
 
-          <p>// Local Development Enviroments</p>
-          <li>Xammp</li>
-          <li>Postgres</li>
+          <h2>// Local Development Enviroments</h2>
+          <p>Xammp</p>
+          <p>Postgres</p>
 
-          <p>// Git Clients</p>
-          <li>Github</li>
-          <li>Git</li>
+          <h2>// Git Clients</h2>
+          <p>Github</p>
+          <p>Git</p>
 
-          <p>// Frontend Frameworks</p>
-          <li>Bootstrap</li>
-          <li>Material UI</li>
+          <h2>// Frontend Frameworks</h2>
+          <p>Bootstrap</p>
+          <p>Material UI</p>
 
-          <p>// Web App Frameworks</p>
-          <li>ReactJS</li>
-          <li>NextJS</li>
-          <li>GraphQL</li>
+          <h2>// Web App Frameworks</h2>
+          <p>ReactJS</p>
+          <p>NextJS</p>
+          <p>GraphQL</p>
         </div>
         <div className="inner-div">
-          <p>// Package Managers</p>
-          <li>Node Package Manager</li>
-          <li>Yarn</li>
+          <h2>// Package Managers</h2>
+          <p>Node Package Manager</p>
+          <p>Yarn</p>
 
-          <p>// API and Testing Tool</p>
-          <li>Postman</li>
+          <h2>// API and Testing Tool</h2>
+          <p>Postman</p>
 
-          <p>// Image Optimization Tool</p>
-          <li>Tiny PNG</li>
+          <h2>// Image Optimization Tool</h2>
+          <p>Tiny PNG</p>
 
-          <p>// Other Tools</p>
-          <li>CodePen</li>
-          <li>Stack Overflow</li>
-          <li>Google Lighthouse</li>
-          <li>Flask</li>
-          <li>Sass</li>
+          <h2>// Other Tools</h2>
+          <p>CodePen</p>
+          <p>Stack Overflow</p>
+          <p>Google Lighthouse</p>
+          <p>Flask</p>
+          <p>Sass</p>
 
-          <li>Jquery</li>
+          <p>Jquery</p>
         </div>
       </div>
 

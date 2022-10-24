@@ -144,7 +144,7 @@ function Header() {
                     <a href="#tools">.tools()</a>
                 </li>
                 <li onClick={()=> dispatch(linkClicked())}>
-                    <a href="#">.contact()</a>
+                    <a href="#contact">.contact()</a>
                 </li>
                 <li>
                     <button onClick={()=> dispatch(changeTheme())}>{isLight ? 'Dark' : 'Light'} Theme</button>

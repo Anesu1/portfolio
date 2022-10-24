@@ -17,16 +17,19 @@ code {
   src: local("FiraCode-SemiBold"),
    url("./fonts/FiraCode-SemiBold.ttf") format("truetype");
   font-weight: normal;
+  font-display: swap;
   }
 @font-face {
   font-family: "FiraCode-Regular";
   src: local("FiraCode-Regular"),
    url("./fonts/FiraCode-Regular.ttf") format("truetype");
   font-weight: normal;
+  font-display: swap
   }
 @font-face {
   font-family: "FiraCode-Bold";
   src: local("FiraCode-Bold"),
    url("./fonts/FiraCode-Bold.ttf") format("truetype");
   font-weight: normal;
+  font-display: swap;
   }

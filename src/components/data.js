@@ -2,7 +2,7 @@ export const projects = [
     {
       webName:"Arete",
       bgImage:"./images/project1.webp",
-      gitLink:"",
+      gitLink:"https://github.com/Anesu1/arete-web",
       siteLink:"https://arete-web-22b18.web.app/"
     },
     
@@ -39,13 +39,13 @@ export const projects = [
     {
       webName:"Alitab",
       bgImage:"./images/project2.webp",
-      gitLink:"",
+      gitLink:"https://github.com/Anesu1/alitab",
       siteLink:"https://www.alitab.co.uk/"
     },
     {
       webName:"Lifel",
       bgImage:"./images/project (9).webp",
-      gitLink:"",
+      gitLink:"https://github.com/Anesu1/lifel",
       siteLink:"https://www.lifel.co.zw"
     },
     {
@@ -69,31 +69,31 @@ export const projects = [
     {
       webName:"Arcs",
       bgImage:"./images/project (4).webp",
-      gitLink:"",
+      gitLink:"https://github.com/Anesu1/arcs-poscloud",
       siteLink:"https://arcs-poscloud.web.app/"
     },
     {
       webName:"DBN",
       bgImage:"./images/project (7).webp",
-      gitLink:"",
+      gitLink:"https://github.com/DrRichadams/dbn-web",
       siteLink:"https://dbn-web.web.app/"
     },
     {
       webName:"Peacock Collective",
       bgImage:"./images/project (6).webp",
-      gitLink:"",
+      gitLink:"https://github.com/Anesu1/peacock-collective",
       siteLink:"https://peacock-collective.netlify.app/"
     },
     {
       webName:"No Walls",
       bgImage:"./images/project (8).webp",
-      gitLink:"",
+      gitLink:"https://github.com/Anesu1/no-walls-media",
       siteLink:"https://no-walls-media.web.app/"
     },
     {
       webName:"Opulnt",
       bgImage:"./images/project (5).webp",
-      gitLink:"",
+      gitLink:"https://github.com/Anesu1/opulnt",
       siteLink:"https://opulnt.netlify.app/"
     },
     {
@@ -111,19 +111,19 @@ export const projects = [
     {
       webName:"Jumpstart",
       bgImage:"./images/project.webp",
-      gitLink:"https://github.com/Anesu1/mweya-web",
+      gitLink:"https://github.com/Anesu1/jumpstart",
       siteLink:"https://jumpstart-web.web.app/"
     },
     {
       webName:"Mbare Artspace",
       bgImage:"./images/project (15).webp",
-      gitLink:"https://github.com/Anesu1/mweya-web",
+      gitLink:"https://github.com/Anesu1/mbare-artspace",
       siteLink:"https://mbare-artspace.web.app/"
     },
     {
       webName:"My Portfolio",
       bgImage:"./images/project (14).webp",
-      gitLink:"https://github.com/Anesu1/mweya-web",
+      gitLink:"https://github.com/Anesu1/portfolio",
       siteLink:"https://anesu-ndoro.web.app/"
     },
     {
@@ -137,6 +137,12 @@ export const projects = [
       bgImage:"./images/project (13).webp",
       gitLink:"https://github.com/Anesu1/Newshub",
       siteLink:"https://newshub-be8fb.web.app/"
+    },
+    {
+      webName:"Pixelanders",
+      bgImage:"./images/project (16).webp",
+      gitLink:"https://github.com/Anesu1/pexalanders",
+      siteLink:"https://pixerlanders.web.app/"
     },
     {
       webName:"Tengesai",
