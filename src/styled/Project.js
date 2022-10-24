@@ -9,6 +9,7 @@ const Wrapper = styled.div`
 width:100%;
 overflow:hidden;
 margin-bottom: 30px;
+max-width:500px;
     .showpic{
         height: 200px;
         max-height:200px;
@@ -26,6 +27,7 @@ margin-bottom: 30px;
     }
   @media (min-width: 768px) {
     width: 48%;
+    max-width:unset;
 
   }
   @media (min-width: 992px) {
