@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Projects from './pages/Projects';
 import image from './bg.webp'
+import ThankYou from './ThankYou';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
         <Routes>
           <Route element={<Home />} exact path='/' />
           <Route element={<Projects />} path='/projects' />
+          <Route element={<ThankYou />} path="/submitted"/>
         </Routes>
       <Footer />
       </Router>

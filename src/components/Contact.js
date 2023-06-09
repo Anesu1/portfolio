@@ -6,6 +6,7 @@ import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import { FiLinkedin } from "react-icons/fi";
 import { FaWhatsapp, FaGithub } from "react-icons/fa";
+import mycv from '../Anesu-Ndoro.pdf'
 
 const Wrapper = styled.section`
   padding: 5%;
@@ -133,7 +134,7 @@ function Contact() {
           </a>
           <p>
             <a
-              href="https://export-download.canva.com/oeRFQ/DAE-ULoeRFQ/63/0-38780810706.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJHKNGJLC2J7OGJ6Q%2F20221022%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221022T041836Z&X-Amz-Expires=77296&X-Amz-Signature=a89ef86efae9fa086fc43778172f5502f79e3570a29a4834b1980bb3e5eeee84&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Anesu%2520Ndoro.pdf&response-expires=Sun%2C%2023%20Oct%202022%2001%3A46%3A52%20GMT"
+              href={mycv}
               download="Anesu Ndoro CV"
             >
               Download My CV
@@ -142,12 +143,16 @@ function Contact() {
         </div>
 
         <form
-          action="https://formsubmit.co/64bf2f93900008248c4128f23b209e3f"
+          action="https://formsubmit.co/4ef6cdbf411f48a3ab31461a0162bf26"
           method="POST"
           
         >
-          
-          <input type="hidden" name="_captcha" value="false"></input>
+           <input
+            type="hidden"
+            name="_next"
+            value="https://anesu-ndoro.web.app/submitted"
+          />
+        
           <input type="hidden" name="_template" value="table"></input>
           <div className="top">
             <TextField
@@ -155,12 +160,14 @@ function Contact() {
               variant="standard"
               name="firstname"
               label="First Name"
+              required
             />
             <TextField
               id="email"
               variant="standard"
               name="email"
               label="Email Address"
+              required
             />
           </div>
           <TextField
@@ -169,6 +176,7 @@ function Contact() {
             variant="standard"
             label="Message"
             multiline
+            required
             rows={3}
           />
 
