@@ -6,7 +6,7 @@ import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import { FiLinkedin } from "react-icons/fi";
 import { FaWhatsapp, FaGithub } from "react-icons/fa";
-import mycv from '../Anesu-Ndoro.pdf'
+import mycv from '../Anesu Ndoro.pdf'
 
 const Wrapper = styled.section`
   padding: 5%;

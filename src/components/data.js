@@ -150,5 +150,11 @@ export const projects = [
       gitLink:"https://github.com/Anesu1/tengesai",
       siteLink:"http://tengesai-react.web.app/"
     },
+    {
+      webName:"Confide Pay",
+      bgImage:"./images/project (17).webp",
+      gitLink:"https://github.com/Anesu1/confide-pay",
+      siteLink:"http://confidepay.co.zw/"
+    },
   ]
 
