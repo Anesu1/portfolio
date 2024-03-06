@@ -5,7 +5,12 @@ export const projects = [
       gitLink:"https://github.com/Anesu1/arete-web",
       siteLink:"https://arete-web-22b18.web.app/"
     },
-    
+    {
+      webName:"Events App",
+      bgImage:"./images/events.webp",
+      gitLink:"https://github.com/Anesu1/events",
+      siteLink:"https://events-app-chi-rust.vercel.app/"
+    },
     {
       webName:"Tigzozo",
       bgImage:"./images/project3.webp",
