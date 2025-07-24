@@ -6,11 +6,10 @@ import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import { FiLinkedin } from "react-icons/fi";
 import { FaWhatsapp, FaGithub } from "react-icons/fa";
-import mycv from '../Anesu Ndoro.pdf'
+import mycv from "../Anesu Ndoro.pdf";
 
 const Wrapper = styled.section`
   padding: 5%;
-  background: ${(props) => props.bgColor};
   @media (min-width: 768px) {
     padding: 5% 10%;
   }
@@ -115,15 +114,18 @@ function Contact() {
   const isLight = useSelector((state) => state.theme.isLight);
   return (
     <Wrapper
-      bgColor={isLight ? "rgba(243, 243, 243, 0.7)" : "rgba(29, 29, 29, 0.8)"}
       color={isLight ? "#000000" : "#f3f3f3"}
       id="contact"
+      className="glass"
     >
       <div className="outer">&lt;wrapper id="contact"&gt; </div>
       <div className="inner">
         <div className="left">
           <p>// You can reach out to me anytime 😉</p>
-          <a aria-label="Linkedin profile" href="https://www.linkedin.com/in/anesu-ndoro-a89127209">
+          <a
+            aria-label="Linkedin profile"
+            href="https://www.linkedin.com/in/anesu-ndoro-a89127209"
+          >
             <FiLinkedin />
           </a>
           <a aria-label="Whatsapp Chat" href="https://wa.me/263783977875">
@@ -133,10 +135,7 @@ function Contact() {
             <FaGithub />
           </a>
           <p>
-            <a
-              href={mycv}
-              download="Anesu Ndoro CV"
-            >
+            <a href={mycv} download="Anesu Ndoro CV">
               Download My CV
             </a>
           </p>
@@ -145,14 +144,13 @@ function Contact() {
         <form
           action="https://formsubmit.co/4ef6cdbf411f48a3ab31461a0162bf26"
           method="POST"
-          
         >
-           <input
+          <input
             type="hidden"
             name="_next"
             value="https://anesu-ndoro.web.app/submitted"
           />
-        
+
           <input type="hidden" name="_template" value="table"></input>
           <div className="top">
             <TextField
