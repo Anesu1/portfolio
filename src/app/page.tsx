@@ -76,6 +76,7 @@ export default function Page() {
             </div>
           </Reveal>
         </div>
+        </div>
 
         <div className="absolute inset-x-0 bottom-6">
           <div className="container-x flex items-center justify-between">
