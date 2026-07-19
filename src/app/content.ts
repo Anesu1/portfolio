@@ -146,6 +146,25 @@ export const aboutContent: AboutContent = {
   paragraph: "Full-stack engineer with 6+ years shipping AI-integrated production platforms — LLM-powered backends, real-time fraud detection, and full-stack web products — across talent development, e-commerce, cybersecurity, and enterprise domains, as Software Developer and Technical Lead at Uncommon.org. Google Cloud Associate Cloud Engineer certified. BSc Honours Computer Science, NUST, Bulawayo (graduated June 2026). Cut a production system's cold-start latency 95% (~43s to under 2s) through backend architecture work. Currently also running regional operations for a 5,000+ learner program — leadership and delivery experience that carries over directly to senior/staff-level engineering work. Open to full-time and contract remote roles worldwide, flexible on overlap hours."
 };
 
+export const aboutParagraphs: string[] = [
+  "Full-stack engineer with 6+ years shipping AI-integrated production platforms — LLM-powered backends, real-time fraud detection, and full-stack web products — across talent development, e-commerce, cybersecurity, and enterprise domains, as Software Developer and Technical Lead at Uncommon.org.",
+  "Cut a production system's cold-start latency 95% (~43s to under 2s) through backend architecture work. Currently also running regional operations for a 5,000+ learner program — leadership and delivery experience that carries over directly to senior/staff-level engineering work.",
+];
+
+export type AboutFact = {
+  label: string;
+  value: string;
+};
+export const aboutFacts: AboutFact[] = [
+  { label: "Role", value: "Software Developer & Technical Lead, Uncommon.org" },
+  { label: "Cert", value: "Google Cloud Associate Cloud Engineer" },
+  { label: "Education", value: "BSc Hons Computer Science, NUST — graduated June 2026" },
+  { label: "Base", value: "Bulawayo, Zimbabwe — remote worldwide" },
+  { label: "Status", value: "Open to full-time & contract, flexible on overlap hours" },
+];
+
+export const githubUrl = "https://github.com/Anesu1";
+
 export type EngagementModel = {
   id: string;
   label: string;
