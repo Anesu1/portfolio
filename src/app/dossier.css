@@ -1,0 +1,105 @@
+/* Dossier design system — animations, tokens, and semantic classes */
+
+:root {
+  /* Design tokens */
+  --ink: #0d0c0a;
+  --bone: #ede7db;
+  --accent: #ff4000;
+  --accent-dim: rgba(255, 64, 0, 0.2);
+  --raised: #1a1917;
+  --muted: #a89f97;
+  --line: #2a2925;
+  --line-strong: #3d3935;
+}
+
+/* Semantic classes */
+.stamp {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted, #a89f97);
+}
+
+.grain {
+  position: relative;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.03), rgba(0,0,0,.03) 1px, transparent 1px, transparent 2px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.03), rgba(0,0,0,.03) 1px, transparent 1px, transparent 2px);
+  background-size: 4px 4px;
+  pointer-events: none;
+}
+
+.link-sweep {
+  position: relative;
+}
+
+.link-sweep::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.link-sweep:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, #ff4000);
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+/* Animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 64, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 64, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 64, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 36s linear infinite;
+}
+
+/* Accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
