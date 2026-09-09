@@ -81,12 +81,13 @@ export const products: ProductsItem[] = [
 export type Logos4Item = {
   href: string;
   imgSrc: string;
+  alt: string;
 };
-// TODO(launch): only GitHub is a confirmed real profile URL. Add
-// LinkedIn/other real profile links here once you have them — not
-// fabricating placeholder social URLs.
+// LinkedIn URL sourced from the social link on github.com/Anesu1's own
+// profile sidebar — confirmed real, not a placeholder.
 export const logos4: Logos4Item[] = [
-    { href: "https://github.com/Anesu1", imgSrc: "/assets/github.svg" }
+    { href: "https://github.com/Anesu1", imgSrc: "/assets/github.svg", alt: "GitHub" },
+    { href: "https://linkedin.com/in/anesu-ndoro-a89127209", imgSrc: "/assets/linkedin.svg", alt: "LinkedIn" }
 ];
 
 export type FooterNavItem = {
@@ -126,11 +127,21 @@ export const ctaSectionContent: CtaSectionContent = {
 
 export type HeroContent = {
   headline: string;
+  title: string;
+  typewriterPrefix: string;
+  typewriterTaglines: string[];
   ctaViewWork: { label: string; href: string };
   ctaDownloadCV: { label: string; href: string };
 };
 export const heroContent: HeroContent = {
   headline: "Full-stack engineer who ships AI-integrated products end to end — from a WhatsApp bot doing real-time fraud detection to platforms that clone Webflow/Framer sites into production React code.",
+  title: "Full-Stack. AI-Integrated.",
+  typewriterPrefix: "I ship ",
+  typewriterTaglines: [
+    "AI-integrated products.",
+    "production React from Figma/Webflow.",
+    "real-time fraud detection bots."
+  ],
   ctaViewWork: { label: "View Work", href: "#work" },
   ctaDownloadCV: { label: "Download CV", href: "/Anesu_Ndoro_Resume.pdf" }
 };
@@ -145,25 +156,6 @@ export const aboutContent: AboutContent = {
   heading: "Shipping production platforms since 2019",
   paragraph: "Full-stack engineer with 6+ years shipping AI-integrated production platforms — LLM-powered backends, real-time fraud detection, and full-stack web products — across talent development, e-commerce, cybersecurity, and enterprise domains, as Software Developer and Technical Lead at Uncommon.org. Google Cloud Associate Cloud Engineer certified. BSc Honours Computer Science, NUST, Bulawayo (graduated June 2026). Cut a production system's cold-start latency 95% (~43s to under 2s) through backend architecture work. Currently also running regional operations for a 5,000+ learner program — leadership and delivery experience that carries over directly to senior/staff-level engineering work. Open to full-time and contract remote roles worldwide, flexible on overlap hours."
 };
-
-export const aboutParagraphs: string[] = [
-  "Full-stack engineer with 6+ years shipping AI-integrated production platforms — LLM-powered backends, real-time fraud detection, and full-stack web products — across talent development, e-commerce, cybersecurity, and enterprise domains, as Software Developer and Technical Lead at Uncommon.org.",
-  "Cut a production system's cold-start latency 95% (~43s to under 2s) through backend architecture work. Currently also running regional operations for a 5,000+ learner program — leadership and delivery experience that carries over directly to senior/staff-level engineering work.",
-];
-
-export type AboutFact = {
-  label: string;
-  value: string;
-};
-export const aboutFacts: AboutFact[] = [
-  { label: "Role", value: "Software Developer & Technical Lead, Uncommon.org" },
-  { label: "Cert", value: "Google Cloud Associate Cloud Engineer" },
-  { label: "Education", value: "BSc Hons Computer Science, NUST — graduated June 2026" },
-  { label: "Base", value: "Bulawayo, Zimbabwe — remote worldwide" },
-  { label: "Status", value: "Open to full-time & contract, flexible on overlap hours" },
-];
-
-export const githubUrl = "https://github.com/Anesu1";
 
 export type EngagementModel = {
   id: string;
@@ -207,17 +199,16 @@ export type CaseStudy = {
 };
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "raha",
-    title: "RAHA — WhatsApp Giveaway Bot",
-    oneLiner: "A production WhatsApp chatbot with real-time AI fraud detection on submitted photos.",
-    tags: ["AI", "CHATBOT", "BACKEND"],
-    problem: "A consumer giveaway campaign needed a fully WhatsApp-native entry flow — data collection, product-code validation, photo submission — with real-time fraud screening and no multi-second cold-start lag breaking the chat experience.",
-    approach: "Production WhatsApp chatbot built on Flask, using Meta's WhatsApp Cloud API for messaging and Convex as a serverless backend. Groq's Llama 4 Scout vision model does real-time fraud detection on submitted photos, flagging AI-generated or invalid images via prompt engineering. A web admin dashboard handles entry monitoring, bi-weekly winner draws, CSV export, and product-code management.",
-    stack: ["Python", "Flask", "Convex", "Meta WhatsApp Cloud API", "Groq (Llama 4 Scout, vision)"],
-    number: "Cold start cut from ~43s to under 2s (95%+ improvement) via Convex serverless caching + pooled connections."
-    // liveUrl deliberately omitted: raha-chatbot.onrender.com currently returns
-    // 503 "This service has been suspended." Re-add liveUrl once the Render
-    // service is running again — a dead demo link is worse than no link.
+    slug: "pozozo-sports",
+    title: "Pozozo Sports",
+    oneLiner: "A Molten/Mikasa sports-ball storefront with an interactive 3D product viewer and WhatsApp-native ordering.",
+    tags: ["NEXT.JS", "THREE.JS", "E-COMMERCE"],
+    problem: "An authorised Molten/Mikasa reseller needed a real storefront across four sports (basketball, football, netball, volleyball) for schools, clubs, and shops — but the business runs on WhatsApp quoting and invoicing, not online payment, so a standard checkout flow was the wrong model entirely.",
+    approach: "Next.js storefront backed by Sanity CMS for the 80+ product catalog, with an interactive Three.js product viewer (drag to rotate) replacing static product photography on ball pages. \"Add to enquiry\" builds a list that hands off to a prefilled WhatsApp message instead of a cart/checkout — matching the real sales process end to end. Built out bulk/school ordering, brand pages (Molten/Mikasa), a size guide, and care/FAQ content pages.",
+    stack: ["Next.js", "TypeScript", "Sanity CMS", "Three.js", "Framer Motion", "Vercel"],
+    number: "80+ products across 4 sports; every purchase path routes to a prefilled WhatsApp enquiry, with zero online payment processing.",
+    liveUrl: "https://pozozo-sports.vercel.app",
+    imgSrc: "/assets/work/pozozo-sports.png"
   },
   {
     slug: "website-cloner",
@@ -228,7 +219,12 @@ export const caseStudies: CaseStudy[] = [
     approach: "Full-stack platform (separate open-source frontend and backend) powered by Ditto's site-cloning engine: URL to headless browser capture to normalized render IR to deterministic inference to app generation. The frontend is a Next.js UI — submit a URL, pick output framework (Next.js or Vite React) and CSS approach, poll a job queue, download a ZIP. The backend is a proper multi-service platform: a Hono REST API, a queued worker for capture/generation jobs, Drizzle ORM over PostgreSQL, S3/R2-compatible artifact storage, Playwright driving the actual browser capture, a CLI unpacker, and a hosted API with an MCP server for programmatic access.",
     stack: ["TypeScript", "Next.js", "React/Vite", "Hono", "Drizzle ORM", "PostgreSQL", "Playwright", "Docker"],
     number: "5 decoupled services (compiler, API, worker, database, storage) orchestrated into one capture-to-code pipeline. This portfolio's own front-end shell was generated by this same tool.",
-    liveUrl: "https://github.com/Anesu1/website-cloner"
+    liveUrl: "https://github.com/Anesu1/website-cloner",
+    // Screenshot is the real live frontend (website-cloner-chi.vercel.app) —
+    // a plain, functional capture form, not a polished marketing shot. Real
+    // beats fake even when it's this bare; re-capture once the backend
+    // health-check resolves instead of hanging on "Checking backend...".
+    imgSrc: "/assets/work/website-cloner.png"
   },
   {
     slug: "uncommon-global",
@@ -238,7 +234,8 @@ export const caseStudies: CaseStudy[] = [
     problem: "Uncommon.org needed a visually ambitious, scroll-driven site for its global presence, with distinctive visual assets that wouldn't blow the load-time budget.",
     approach: "Scroll-driven storytelling site built in Next.js, paired with a hand-built AI image/video pipeline: identify the last frame, generate the first frame in Google Whisk, generate the transition video in Google Flow, extract frames via ezgif, compress to WebP for load performance.",
     stack: ["Next.js", "Google Whisk", "Google Flow", "ezgif", "WebP compression pipeline"],
-    liveUrl: "https://uncommon-global.vercel.app"
+    liveUrl: "https://uncommon-global.vercel.app",
+    imgSrc: "/assets/work/uncommon-global.png"
   },
   {
     slug: "zimsec-vault",
@@ -248,7 +245,8 @@ export const caseStudies: CaseStudy[] = [
     problem: "A real, personal problem — balancing screentime against required reading/study for a grade-7 student, without constant parental-enforcement friction.",
     approach: "A reading-time tracker with a quiz-gated unlock: a random 2-of-6 subjects quiz has to be passed before screentime unlocks. Built on Next.js and Convex, using the Groq SDK to generate quiz content per session rather than pulling from a static question bank — a second, independent proof point for AI-integrated product work.",
     stack: ["Next.js", "React", "Convex", "Groq SDK", "Framer Motion", "GSAP", "Tailwind CSS"],
-    liveUrl: "https://zimsec-vault.vercel.app"
+    liveUrl: "https://zimsec-vault.vercel.app",
+    imgSrc: "/assets/work/zimsec-vault.png"
   }
 ];
 
@@ -259,6 +257,10 @@ export type OtherBuild = {
 };
 export const otherBuilds: OtherBuild[] = [
   { title: "Scam Detection Web App", description: "Python-based URL analysis system detecting phishing domains, malicious redirects, and fake payment portals via cybersecurity heuristics and pattern matching.", liveUrl: "https://scam-detector-nu.vercel.app" },
+  {
+    title: "RAHA — WhatsApp Giveaway Bot",
+    description: "Production WhatsApp chatbot (Flask + Meta WhatsApp Cloud API + Convex) with real-time AI fraud detection on submitted photos via Groq's Llama 4 Scout vision model, plus a web admin dashboard for winner draws and CSV export. Cold start cut ~43s to under 2s (95%+) via serverless caching + pooled connections. Private client project — no public repo, and its Render demo is currently suspended, so it's listed here rather than as a flagship case study."
+  },
   { title: "Apex Fuel (mobile)", description: "Mobile app built with Flutter — included as a range signal, not a deep case study." }
 ];
 

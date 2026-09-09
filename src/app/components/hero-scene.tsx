@@ -185,6 +185,15 @@ export default function HeroScene() {
       }
     }
 
+    // Bars/grid/webs/arrow all use a narrower horizontal spread than the
+    // network-y shapes (sphere/nucleus/triple/triangle/work) — those literal
+    // shapes sit in the same right-hand panel as page content (Stack's
+    // column list, the Contact form), and earlier versions spanning ~4 world
+    // units wide drifted straight over that text/form fields. Keeping x
+    // roughly within [-0.9, 0.9] here, combined with a rightward `position`
+    // shift per stop, keeps the shape's mass in the panel's outer gutter
+    // instead of overlapping content — verified empirically via screenshots
+    // at a 1440px viewport, not derived analytically.
     const shapeBars = new Float32Array(NODE_COUNT * 3);
     {
       const BAR_COUNT = 5;
@@ -192,11 +201,11 @@ export default function HeroScene() {
       const heights = [-0.5, 0.1, 0.7, 1.3, 1.9]; // ascending — "the numbers" going up
       let cursor = 0;
       for (let b = 0; b < BAR_COUNT; b++) {
-        const x = -2 + b * 1.0;
+        const x = -0.8 + b * 0.4;
         const top = heights[b];
         for (let k = 0; k < counts[b]; k++) {
           const idx = (cursor + k) * 3;
-          shapeBars[idx] = x + (Math.random() - 0.5) * 0.3;
+          shapeBars[idx] = x + (Math.random() - 0.5) * 0.12;
           shapeBars[idx + 1] = -1.6 + Math.random() * (top + 1.6);
           shapeBars[idx + 2] = (Math.random() - 0.5) * 0.3;
         }
@@ -210,10 +219,10 @@ export default function HeroScene() {
       const counts = splitCounts(NODE_COUNT, COLS);
       let cursor = 0;
       for (let c = 0; c < COLS; c++) {
-        const x = -1.8 + c * 1.2;
+        const x = -0.9 + c * 0.6;
         for (let k = 0; k < counts[c]; k++) {
           const idx = (cursor + k) * 3;
-          shapeGrid[idx] = x + (Math.random() - 0.5) * 0.15;
+          shapeGrid[idx] = x + (Math.random() - 0.5) * 0.1;
           shapeGrid[idx + 1] = -2 + Math.random() * 4;
           shapeGrid[idx + 2] = (Math.random() - 0.5) * 0.4;
         }
@@ -224,10 +233,10 @@ export default function HeroScene() {
     const shapeWebs = new Float32Array(NODE_COUNT * 3);
     {
       const counts = splitCounts(NODE_COUNT, 4);
-      const centers: Array<[number, number]> = [[-1.6, 0.9], [1.6, 0.9], [-1.6, -0.9], [1.6, -0.9]];
+      const centers: Array<[number, number]> = [[-0.8, 0.9], [0.8, 0.9], [-0.8, -0.9], [0.8, -0.9]];
       let cursor = 0;
       for (let g = 0; g < 4; g++) {
-        fillTightCluster(shapeWebs, cursor, counts[g], centers[g][0], centers[g][1], 0, 0.4);
+        fillTightCluster(shapeWebs, cursor, counts[g], centers[g][0], centers[g][1], 0, 0.32);
         cursor += counts[g];
       }
     }
@@ -235,24 +244,24 @@ export default function HeroScene() {
     const shapeArrow = new Float32Array(NODE_COUNT * 3);
     {
       // A ">" chevron pointing right, toward the contact form: two rays with
-      // opposite slopes meeting at the tip (0.3, 0) — NOT the same slope
-      // translated, which would just be one straight line (caught this via
-      // sample-data verification: the first version had both rays at
-      // slope -1, so it rendered as a single diagonal, not a bent arrow).
+      // opposite slopes meeting at the tip — NOT the same slope translated,
+      // which would just be one straight line (caught this via sample-data
+      // verification: the first version had both rays at slope -1, so it
+      // rendered as a single diagonal, not a bent arrow).
       for (let i = 0; i < NODE_COUNT; i++) {
         const onUpperRay = i % 2 === 0;
         const t = Math.random();
-        const jitter = (Math.random() - 0.5) * 0.18;
+        const jitter = (Math.random() - 0.5) * 0.14;
         const idx = i * 3;
-        const tipX = 0.3, tipY = 0;
+        const tailX = -0.5, tipX = 0.5, tipY = 0;
         if (onUpperRay) {
-          // (-1, 1) -> tip
-          shapeArrow[idx] = -1 + t * (tipX - -1) + jitter;
-          shapeArrow[idx + 1] = 1 + t * (tipY - 1) + jitter;
+          // (tailX, 0.6) -> tip
+          shapeArrow[idx] = tailX + t * (tipX - tailX) + jitter;
+          shapeArrow[idx + 1] = 0.6 + t * (tipY - 0.6) + jitter;
         } else {
-          // (-1, -1) -> tip
-          shapeArrow[idx] = -1 + t * (tipX - -1) + jitter;
-          shapeArrow[idx + 1] = -1 + t * (tipY - -1) + jitter;
+          // (tailX, -0.6) -> tip
+          shapeArrow[idx] = tailX + t * (tipX - tailX) + jitter;
+          shapeArrow[idx + 1] = -0.6 + t * (tipY - -0.6) + jitter;
         }
         shapeArrow[idx + 2] = (Math.random() - 0.5) * 0.2;
       }
@@ -266,10 +275,10 @@ export default function HeroScene() {
       { name: "engagement", selector: '[data-scene-stop="engagement"]', shape: shapeTriple, position: [0, 0.2, 0], settle: 0.35, lineOpacity: 0.25, scale: 1 },
       { name: "strengths", selector: '[data-scene-stop="strengths"]', shape: shapeTriangle, position: [0.2, 0, -0.3], settle: 0.6, lineOpacity: 0.15, scale: 1 },
       { name: "work", selector: "#work", shape: shapeWork, position: [0.4, 0, 0], settle: 0.3, lineOpacity: 0.2, scale: 1.1 },
-      { name: "proof", selector: '[data-scene-stop="proof"]', shape: shapeBars, position: [0.3, -0.1, 0.4], settle: 0.75, lineOpacity: 0.05, scale: 1 },
-      { name: "stack", selector: '[data-scene-stop="stack"]', shape: shapeGrid, position: [0.3, 0, -0.4], settle: 0.75, lineOpacity: 0.08, scale: 1 },
-      { name: "client", selector: '[data-scene-stop="client"]', shape: shapeWebs, position: [0.2, 0, 0.3], settle: 0.3, lineOpacity: 0.45, scale: 1 },
-      { name: "contact", selector: "#contact", shape: shapeArrow, position: [0, 0.1, 0], settle: 0.85, lineOpacity: 0.05, scale: 1 },
+      { name: "proof", selector: '[data-scene-stop="proof"]', shape: shapeBars, position: [1.0, -0.1, 0.4], settle: 0.92, lineOpacity: 0.05, scale: 1.2 },
+      { name: "stack", selector: '[data-scene-stop="stack"]', shape: shapeGrid, position: [1.0, 0, -0.4], settle: 0.92, lineOpacity: 0.08, scale: 1.2 },
+      { name: "client", selector: '[data-scene-stop="client"]', shape: shapeWebs, position: [1.0, 0, 0.3], settle: 0.5, lineOpacity: 0.45, scale: 1.2 },
+      { name: "contact", selector: "#contact", shape: shapeArrow, position: [1.1, 0.1, 0], settle: 0.95, lineOpacity: 0.05, scale: 1.2 },
       { name: "footer", selector: null, shape: shapeText, position: [0, -0.05, 0], settle: 1, lineOpacity: 0, scale: 1.15 },
     ];
 
@@ -282,7 +291,7 @@ export default function HeroScene() {
     pointsGeometry.setAttribute("color", new THREE.BufferAttribute(pointColors, 3));
     const pointsMaterial = new THREE.PointsMaterial({
       color: ACCENT,
-      size: 0.055,
+      size: 0.09,
       transparent: true,
       opacity: 0.9,
       sizeAttenuation: true,

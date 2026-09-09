@@ -43,6 +43,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <p className="block max-w-160 mt-5 text-color-001 text-lg leading-[1.6875rem] tracking-[-0.36px]">
               {study.oneLiner}
             </p>
+            {study.imgSrc && (
+              <img
+                src={study.imgSrc}
+                alt={`${study.title} screenshot`}
+                className="block mt-10 w-full max-w-224 rounded-xl border border-solid border-border object-cover"
+              />
+            )}
             <div className="w-3 h-3 border border-solid border-border block absolute -top-1.5 -left-1.5 z-9 min-w-3 rounded-[1px] bg-background" />
             <div className="w-3 h-3 border border-solid border-border block absolute -top-1.5 -right-1.5 z-9 min-w-3 rounded-[1px] bg-background" />
             <div className="w-3 h-3 border border-solid border-border block absolute -bottom-1.5 -left-1.5 z-9 min-w-3 rounded-[1px] bg-background" />

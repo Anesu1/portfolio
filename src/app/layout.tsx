@@ -3,6 +3,7 @@ import "./ditto.css";
 import type { ReactNode } from "react";
 import { SITE_ORIGIN } from "../lib/site";
 import SiteHeader from "./components/site-header";
+import { heroContent } from "./content";
 
 // Favicons are handled by Next.js's file-based convention: src/app/icon.png,
 // src/app/apple-icon.png, and src/app/favicon.ico (an "AN" monogram in the
@@ -11,16 +12,16 @@ import SiteHeader from "./components/site-header";
 export const metadata = {
   "metadataBase": new URL(SITE_ORIGIN || "http://localhost:3000"),
   "title": "Anesu Ndoro — Full-Stack Engineer",
-  "description": "Full-stack engineer who ships AI-integrated products end to end — from a WhatsApp bot doing real-time fraud detection to platforms that clone Webflow/Framer sites into production React code.",
+  "description": heroContent.headline,
   "openGraph": {
     "title": "Anesu Ndoro — Full-Stack Engineer",
-    "description": "Full-stack engineer who ships AI-integrated products end to end — from a WhatsApp bot doing real-time fraud detection to platforms that clone Webflow/Framer sites into production React code.",
+    "description": heroContent.headline,
     "type": "website"
   },
   "twitter": {
     "card": "summary_large_image",
     "title": "Anesu Ndoro — Full-Stack Engineer",
-    "description": "Full-stack engineer who ships AI-integrated products end to end — from a WhatsApp bot doing real-time fraud detection to platforms that clone Webflow/Framer sites into production React code."
+    "description": heroContent.headline
   }
 };
 export const viewport = {

@@ -9,7 +9,10 @@ export type CoverflowSlide = {
   title: string;
   oneLiner: string;
   tags: string[];
-  image: string;
+  // Absent when no real screenshot exists yet (e.g. a private client project
+  // with no live demo) — renders a "no public preview" placeholder instead
+  // of a stock photo standing in for the real thing.
+  image?: string;
 };
 
 // Apple-style Cover Flow: the active slide sits upright and largest, dead
@@ -184,14 +187,21 @@ export default function CoverflowGallery({ slides }: { slides: CoverflowSlide[] 
                     isActive ? "border-accent" : "border-border"
                   }`}
                 >
-                  <img
-                    src={slide.image}
-                    alt={`${slide.title} preview`}
-                    loading="lazy"
-                    draggable={false}
-                    onDragStart={(e) => e.preventDefault()}
-                    className="block h-full w-full object-cover align-middle [filter:grayscale(1)]"
-                  />
+                  {slide.image ? (
+                    <img
+                      src={slide.image}
+                      alt={`${slide.title} preview`}
+                      loading="lazy"
+                      draggable={false}
+                      onDragStart={(e) => e.preventDefault()}
+                      className="block h-full w-full object-cover align-middle [filter:grayscale(1)]"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-color-002 px-4 text-center">
+                      <span className="text-2xl font-medium text-color-001/40">{slide.title.slice(0, 1)}</span>
+                      <span className="text-xs uppercase tracking-[-0.14px] text-color-001/40">No public preview</span>
+                    </div>
+                  )}
                 </div>
                 <span
                   className={`block text-center [font-family:'Bebas_Neue',_sans-serif] text-2xl leading-6.75 tracking-[-0.4px] transition-colors duration-300 max-md:text-lg md:max-lg:text-xl ${
