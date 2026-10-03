@@ -11,11 +11,31 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const study = caseStudies.find((c) => c.slug === slug);
   if (!study) return {};
+  const title = `${study.title} — Anesu Ndoro`;
+  const images = study.imgSrc ? [study.imgSrc] : undefined;
   return {
-    title: `${study.title} — Anesu Ndoro`,
+    title,
     description: study.oneLiner,
+    alternates: {
+      canonical: `/work/${study.slug}`,
+    },
+    openGraph: {
+      title,
+      description: study.oneLiner,
+      url: `/work/${study.slug}`,
+      type: "article",
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: study.oneLiner,
+      images,
+    },
   };
 }
+
+const isGitHubUrl = (url: string) => /^https:\/\/github\.com\//.test(url);
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -90,7 +110,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                   rel="noreferrer"
                   className="h-12.5 flex max-w-full py-[0.8125rem] pr-[1.9375rem] pl-5 rounded-lg justify-center items-center gap-2 text-color-001 font-medium leading-[1.1875rem] uppercase bg-accent cursor-pointer"
                 >
-                  View live
+                  {isGitHubUrl(study.liveUrl) ? "View source on GitHub" : "View live"}
                 </a>
               )}
             </aside>
